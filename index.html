@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/mystyle.css">
+    <title>note</title>
+</head>
+
+<body>
+    <section id="note-form">
+        <div class="main-title">
+            <h1>Note List Project</h1>
+        </div>
+        <div class="container">
+            <div class="form-wrap">
+                <div class="form-group">
+                    <label for="message">Enter Message</label>
+                    <textarea id="message" name="message" rows="4" cols="40"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input id="time" name="time" type="time">
+                </div>
+                <div class="form-submit">
+                    <button id="save" class="btn" type="submit">Save Note</button>
+                </div>
+                <p class="error"></p>
+            </div>
+        </div>
+        <div class="clearNotes">
+            <button class="btn">Clear Note</button>
+        </div>
+    </section>
+
+    <section id="note-display">
+        <div class="note">
+
+        </div>
+    </section>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

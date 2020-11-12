@@ -1,0 +1,71 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Goldman', cursive;
+}
+
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #344a72;
+
+}
+.btn{
+    padding: 5px 10px;
+}
+button{
+    font-family: 'Goldman', cursive;
+}
+/* form section */
+#note-form{
+
+}
+.container{
+    max-width: 400px;
+    margin: 0 auto;
+}
+.main-title{
+    text-align: center;
+    font-size: 42px;
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(90, 147, 253));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    
+}
+.form-wrap{
+    padding: 20px 40px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+.form-group{
+    padding: 10px 0;
+}
+.form-wrap label{
+    display: block;
+}
+.form-wrap textarea{
+    width: 100%;
+    resize: vertical;
+
+}
+.form-wrap input{
+    width: 100%;
+}
+.form-submit{
+    text-align: center;
+    padding: 10px 0;
+}
+
+.clearNotes{
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+/* display note section */
+#note-display{
+    margin-top: 20px;
+    padding: 40px 20px;
+}
