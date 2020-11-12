@@ -11,11 +11,13 @@ body{
     background-color: #344a72;
 
 }
-.btn{
-    padding: 5px 10px;
-}
+
 button{
     font-family: 'Goldman', cursive;
+}
+
+.btn{
+    padding: 5px 10px;
 }
 /* form section */
 #note-form{
