@@ -70,4 +70,69 @@ button{
 #note-display{
     margin-top: 20px;
     padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.note{
+    background-color: yellow;
+    height: 200px;
+    margin: 40px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.note:hover{
+    transform: scale(1.2,1.2);
+    transition: transform 1s ;
+}
+
+.note:hover .remove-container{
+    display: block;
+}
+
+.note textarea{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 70%;
+    resize: none;
+}
+
+.note p{
+    margin: 0;
+}
+
+/* remove icon */
+.remove-container{
+    position: absolute;
+    right:0;
+    top: -20px;
+    display: none;
+}
+.fa-remove{
+    color: red;
+    font-size: 40px
+
+}
+
+/* animition */
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
