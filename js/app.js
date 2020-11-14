@@ -7,15 +7,48 @@ const saveNote = document.querySelector("#save");
 const noteContainer = document.querySelector("#note-display");
 const removeNotes = document.querySelector("#clear");
 
-
-
+//eventlistners
 saveNote.addEventListener('click', validationForm);
 removeNotes.addEventListener('click', clearNotes);
+
+//make input date cannot choose past date
+let d = new Date();
+console.log(d);
+// let str = d.getFullYear-d.getMonth-d.getDay
+dateEl.setAttribute("min", `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`);
+
+//create object note that have this keys
+let note = {
+    text: "",
+    date: "",
+    time: ""
+}
+
+//array to store all note we create
+let noteArray = [];
+
+//check localstorage in the start of running this app
+checkLocalStorage();
+
+//check if we have in localStorage data of notes, if yes we display them on screen with createNote function
+function checkLocalStorage(){
+    let arr = JSON.parse(localStorage.getItem("notes"));;
+    if(arr){
+        console.log(arr);
+        arr.forEach(element => {
+            createNote(element.text,element.date,element.time);
+            
+        });
+
+
+    }
+};
+
 
 // vaild funcition check that all information insert. if no give error message. else create note 
 function validationForm() {
     let str = "";
-
+    console.log(dateEl.value);
     if (!messageEl.value) {
         str = "Must enter message to note <br>"
     } else if (!dateEl.value) {
@@ -30,14 +63,8 @@ function validationForm() {
     }
 };
 
-//create object note that have this keys
-let note = {
-    text: "",
-    date: "",
-    time: ""
-}
-//array to store all note we create
-let noteArray = [];
+
+
 
 //create note , insert new note to the container, create elments with classes we build before
 function createNote(message, date, time) {
@@ -50,7 +77,7 @@ function createNote(message, date, time) {
     }
     //insert to array note object 
     noteArray.push(note);
-    console.log(note);
+    console.log(noteArray);
     let div = document.createElement('div');
     let textArea = document.createElement('textarea');
     let removeBtn = document.createElement('span');
@@ -76,15 +103,34 @@ function createNote(message, date, time) {
     div.appendChild(pTime);
 
     removeBtn.addEventListener('click',removeNote);
-  
+    console.log(noteArray);
+    //insert to localStorage the noteArray with objects of note
+    localStorage.setItem("notes", JSON.stringify(noteArray));
+    console.log(localStorage.getItem("notes"));
+
 
 };
 
 
 //remove note
 function removeNote(){
+    console.log(this);
     let parentEl = this.parentElement;
+    console.log(parentEl);
+    let notesEl = document.querySelectorAll('.note');
+    let noteIndex;
+    notesEl.forEach((element,index) => {
+        if(element === parentEl){
+            noteIndex = index;
+        }
+        
+    });
+
     parentEl.remove();
+    noteArray.splice(noteIndex,1);
+    localStorage.setItem("notes",JSON.stringify(noteArray));
+    // console.log(x);
+
 };
 
 //remove all notes from display
@@ -92,10 +138,14 @@ function clearNotes() {
     let confirm = window.confirm("Deletion will cause all information to be deleted Are you sure?");
     let notesEl = document.querySelectorAll('.note');
     console.log(notesEl)
-    if (confirm === true)
+    if (confirm === true){
         for (let i = 0; i < notesEl.length; i++) {
             notesEl[i].remove();
             console.log(i)
 
         }
+        localStorage.setItem("notes",null);
+        noteArray = [];
+    }
 }
+
