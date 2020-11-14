@@ -1,73 +1,110 @@
-html,body{
+html,
+body {
     padding: 0;
     margin: 0;
     font-family: 'Goldman', cursive;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #344a72;
 
 }
 
-button{
+button {
     font-family: 'Goldman', cursive;
 }
 
-.btn{
+.btn {
     padding: 5px 10px;
+    background-color: #000000;
+    border: 2px solid #84b0ff;
+    color: #ffffff;
+    transition: all 0.5s;
 }
-/* form section */
-#note-form{
+.btn:hover {
+    background-color: #84b0ff;
+    border: 2px solid #000000;
+    color: #ffffff;
+}
 
-}
-.container{
+/* form section */
+#note-form {}
+
+.container {
     max-width: 400px;
     margin: 0 auto;
 }
-.main-title{
+
+.main-title {
     text-align: center;
     font-size: 42px;
     background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(90, 147, 253));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    
+
 }
-.form-wrap{
-    padding: 20px 40px;
+
+.form-wrap {
+    height: 360px;
+    padding: 15px 50px;
     background-color: #fff;
     border-radius: 20px;
+    background-image: url("../img/line-paper.jpg")
 }
-.form-group{
+
+.form-group {
     padding: 10px 0;
 }
-.form-wrap label{
+
+.form-group:nth-child(2) {
+    padding-top: 15px;
+}
+
+.form-group:nth-child(3) {
+    padding-top: 32px;
+}
+
+.form-wrap label {
     display: block;
 }
-.form-wrap textarea{
+
+.form-wrap textarea {
     width: 100%;
     resize: vertical;
+    background: transparent;
+    border: transparent;
 
 }
-.form-wrap input{
+
+.form-wrap input {
     width: 100%;
-}
-.form-submit{
-    text-align: center;
-    padding: 10px 0;
+    background-color: transparent;
 }
 
-.clearNotes{
+.form-submit {
+    text-align: center;
+    padding-top: 18px;
+}
+
+.error {
+    color: #ff0000;
+    margin: 0;
+    padding-top: 8px;
+}
+
+.clearNotes {
     margin-top: 50px;
     text-align: center;
 }
 
 
 /* display note section */
-#note-display{
+#note-display {
     margin-top: 20px;
     padding: 40px 20px;
     display: flex;
@@ -75,26 +112,28 @@ button{
     justify-content: flex-start;
 }
 
-.note{
-    background-color: yellow;
+.note {
+    /* background-color: yellow; */
+    background-image: url("../img/note.png");
+    background-size: cover;
     height: 200px;
     margin: 40px;
-    padding: 10px;
+    padding: 25px 20px 5px 20px;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.note:hover{
-    transform: scale(1.2,1.2);
-    transition: transform 1s ;
+.note:hover {
+    transform: scale(1.2, 1.2);
+    transition: transform 1s;
 }
 
-.note:hover .remove-container{
+.note:hover .remove-container {
     display: block;
 }
 
-.note textarea{
+.note textarea {
     background-color: transparent;
     border: none;
     width: 100%;
@@ -103,37 +142,38 @@ button{
     margin-bottom: 20px;
 }
 
-.note p{
+.note p {
     margin: 0;
 }
 
 /* remove icon */
-.remove-container{
+.remove-container {
     position: absolute;
-    right:0;
+    right: 0;
     top: -20px;
     display: none;
 }
-.fa-remove{
+
+.fa-remove {
     color: red;
     font-size: 40px
-
 }
 
 /* animition */
 .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 1s;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

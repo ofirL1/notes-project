@@ -56,7 +56,6 @@ function validationForm() {
     } else if (!timeEl.value) {
         str = "Must enter time to note <br>"
     }
-    pErrorEl.style.color = "#ff0000"
     pErrorEl.innerHTML = str;
     if (!str) {
         createNote(messageEl.value, dateEl.value, timeEl.value);
