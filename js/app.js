@@ -31,13 +31,13 @@ let noteArray = [];
 checkLocalStorage();
 
 //check if we have in localStorage data of notes, if yes we display them on screen with createNote function
-function checkLocalStorage(){
+function checkLocalStorage() {
     let arr = JSON.parse(localStorage.getItem("notes"));;
-    if(arr){
+    if (arr) {
         console.log(arr);
         arr.forEach(element => {
-            createNote(element.text,element.date,element.time);
-            
+            createNote(element.text, element.date, element.time);
+
         });
 
 
@@ -78,6 +78,8 @@ function createNote(message, date, time) {
     //insert to array note object 
     noteArray.push(note);
     console.log(noteArray);
+
+    //create elements for note, note = div with 4 childs (textArea,removeBtn that have icon ,p width date info + p with time info)
     let div = document.createElement('div');
     let textArea = document.createElement('textarea');
     let removeBtn = document.createElement('span');
@@ -85,25 +87,27 @@ function createNote(message, date, time) {
     let pDate = document.createElement('p');
     let pTime = document.createElement('p');
 
+    //added classes name that we build in css
     div.className = 'note fade-in';
-    textArea.innerHTML = note.text;
     removeBtn.className = 'remove-container';
     iconCreate.className = 'fa fa-remove';
+    //insert relevant texts
+    textArea.innerHTML = note.text;
     pDate.innerHTML = note.date;
     pTime.innerHTML = note.time;
 
 
 
-
-    noteContainer.appendChild(div);
+    //add to the div we created all element we create , and insert this div to noteContainer
     removeBtn.appendChild(iconCreate);
     div.appendChild(removeBtn);
     div.appendChild(textArea);
     div.appendChild(pDate);
     div.appendChild(pTime);
+    noteContainer.appendChild(div);
 
-    removeBtn.addEventListener('click',removeNote);
-    console.log(noteArray);
+    //add listner to removeButton.
+    removeBtn.addEventListener('click', removeNote);
     //insert to localStorage the noteArray with objects of note
     localStorage.setItem("notes", JSON.stringify(noteArray));
     console.log(localStorage.getItem("notes"));
@@ -112,24 +116,23 @@ function createNote(message, date, time) {
 };
 
 
-//remove note
-function removeNote(){
-    console.log(this);
+//remove note from cilent display + localStorage
+function removeNote() {
     let parentEl = this.parentElement;
-    console.log(parentEl);
     let notesEl = document.querySelectorAll('.note');
+    //store the current note to be remove
     let noteIndex;
-    notesEl.forEach((element,index) => {
-        if(element === parentEl){
+    notesEl.forEach((element, index) => {
+        if (element === parentEl) {
             noteIndex = index;
         }
-        
-    });
 
+    });
+    //remove note from display
     parentEl.remove();
-    noteArray.splice(noteIndex,1);
-    localStorage.setItem("notes",JSON.stringify(noteArray));
-    // console.log(x);
+    //remove note from noteArray and after push it to local storage
+    noteArray.splice(noteIndex, 1);
+    localStorage.setItem("notes", JSON.stringify(noteArray));
 
 };
 
@@ -138,14 +141,13 @@ function clearNotes() {
     let confirm = window.confirm("Deletion will cause all information to be deleted Are you sure?");
     let notesEl = document.querySelectorAll('.note');
     console.log(notesEl)
-    if (confirm === true){
+    if (confirm === true) {
         for (let i = 0; i < notesEl.length; i++) {
             notesEl[i].remove();
             console.log(i)
 
         }
-        localStorage.setItem("notes",null);
+        localStorage.setItem("notes", null);
         noteArray = [];
     }
 }
-
